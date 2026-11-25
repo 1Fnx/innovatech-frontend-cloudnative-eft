@@ -1,0 +1,57 @@
+/* kafka-ui.css - estilos de la pantalla del laboratorio de Apache Kafka.
+   Se usa el prefijo kfk- para no interferir con las clases rmq- de las
+   pantallas de RabbitMQ, aunque la paleta y los tamanos se mantienen para que
+   la aplicacion se vea como una sola pieza. */
+
+.kfk-pagina { max-width: 1050px; margin: 0 auto; padding: 24px 16px 64px; font-family: system-ui, Segoe UI, Arial, sans-serif; color: #1f2933; }
+.kfk-pagina h2 { font-size: 24px; margin-bottom: 8px; }
+.kfk-pagina h4 { font-size: 15px; margin: 18px 0 6px; }
+.kfk-intro { color: #52606d; line-height: 1.55; margin-bottom: 20px; }
+.kfk-ayuda { color: #52606d; font-size: 14px; line-height: 1.5; margin: 0 0 12px; }
+.kfk-resumen { font-size: 14px; color: #1f2933; margin: 10px 0 0; }
+.kfk-vacio { color: #829ab1; font-size: 14px; font-style: italic; margin: 6px 0 0; }
+
+.kfk-tarjeta { border: 1px solid #d9e2ec; border-radius: 10px; padding: 18px; margin-bottom: 20px; background: #fff; }
+.kfk-tarjeta h3 { margin: 0 0 12px; font-size: 17px; }
+.kfk-tarjeta-cabecera { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 12px; flex-wrap: wrap; }
+.kfk-tarjeta-cabecera h3 { margin: 0; }
+
+.kfk-formulario { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; align-items: end; margin-bottom: 14px; }
+.kfk-formulario label { display: flex; flex-direction: column; font-size: 13px; font-weight: 600; gap: 5px; }
+.kfk-formulario input { padding: 8px 10px; border: 1px solid #bcccdc; border-radius: 6px; font-size: 14px; font-weight: 400; }
+.kfk-formulario button { padding: 9px 15px; border: none; border-radius: 6px; background: #2b6cb0; color: #fff; font-size: 14px; cursor: pointer; }
+.kfk-formulario button:disabled { background: #9aa5b1; cursor: not-allowed; }
+
+.kfk-acciones { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-bottom: 12px; }
+.kfk-acciones button, .kfk-tarjeta-cabecera button { padding: 9px 15px; border: none; border-radius: 6px; background: #2b6cb0; color: #fff; font-size: 14px; cursor: pointer; }
+.kfk-acciones button:hover:not(:disabled), .kfk-tarjeta-cabecera button:hover:not(:disabled) { background: #22528a; }
+.kfk-acciones button:disabled, .kfk-tarjeta-cabecera button:disabled { background: #9aa5b1; cursor: not-allowed; }
+
+/* La caja de aviso y el panel de JSON se reutilizan de los componentes
+   compartidos, por lo que se replican aqui las clases rmq- que usan. */
+.kfk-pagina .rmq-alerta { border-radius: 8px; padding: 12px 14px; margin: 12px 0; font-size: 14px; line-height: 1.5; }
+.kfk-pagina .rmq-alerta-ok { background: #e6f4ea; border: 1px solid #9ad3a8; }
+.kfk-pagina .rmq-alerta-error { background: #fdecea; border: 1px solid #e8a09a; }
+.kfk-pagina .rmq-alerta-info { background: #eef2f7; border: 1px solid #c5d2e0; }
+.kfk-pagina .rmq-json { margin-top: 12px; }
+.kfk-pagina .rmq-json-titulo { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; color: #52606d; margin-bottom: 5px; }
+.kfk-pagina .rmq-json pre { background: #1f2933; color: #e4e7eb; padding: 12px; border-radius: 8px; font-size: 12.5px; line-height: 1.45; overflow-x: auto; margin: 0; }
+
+.kfk-salud { list-style: none; margin: 0 0 12px; padding: 0; }
+.kfk-salud li { display: flex; align-items: center; gap: 9px; padding: 6px 0; font-size: 14px; border-bottom: 1px solid #f0f4f8; }
+.kfk-salud-nombre { font-weight: 600; min-width: 190px; }
+.kfk-salud-detalle { color: #52606d; font-size: 13px; }
+.kfk-punto { width: 11px; height: 11px; border-radius: 50%; flex: 0 0 auto; }
+.kfk-punto-verde { background: #2f855a; }
+.kfk-punto-rojo { background: #c53030; }
+.kfk-punto-gris { background: #9aa5b1; }
+
+.kfk-tabla { width: 100%; border-collapse: collapse; margin-top: 12px; font-size: 13px; }
+.kfk-tabla th, .kfk-tabla td { border: 1px solid #d9e2ec; padding: 7px 9px; text-align: left; }
+.kfk-tabla th { background: #f0f4f8; font-size: 12px; text-transform: uppercase; letter-spacing: .03em; }
+.kfk-tabla td em { color: #829ab1; }
+
+/* Particion y offset son los dos datos centrales del laboratorio, por eso se
+   resaltan: facilita leerlos de un vistazo y compararlos con la consola. */
+.kfk-destacado { font-weight: 700; font-variant-numeric: tabular-nums; }
+.kfk-retraso { background: #fffbea; font-weight: 700; }

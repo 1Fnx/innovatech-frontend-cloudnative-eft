@@ -1,0 +1,50 @@
+/* rabbitmq-ui.css - estilos de las pantallas de mensajeria y administracion */
+
+.rmq-pagina { max-width: 1050px; margin: 0 auto; padding: 24px 16px 64px; font-family: system-ui, Segoe UI, Arial, sans-serif; color: #1f2933; }
+.rmq-pagina h2 { font-size: 24px; margin-bottom: 8px; }
+.rmq-intro { color: #52606d; line-height: 1.55; margin-bottom: 20px; }
+.rmq-ayuda { color: #52606d; font-size: 14px; line-height: 1.5; }
+
+.rmq-tarjeta { border: 1px solid #d9e2ec; border-radius: 10px; padding: 18px; margin-bottom: 20px; background: #fff; }
+.rmq-tarjeta h3 { margin: 0 0 12px; font-size: 17px; }
+.rmq-tarjeta-cabecera { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 12px; }
+.rmq-tarjeta-cabecera h3 { margin: 0; }
+.rmq-usuario { font-size: 13px; color: #52606d; }
+
+.rmq-formulario { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; margin-bottom: 14px; }
+.rmq-formulario label { display: flex; flex-direction: column; font-size: 13px; font-weight: 600; gap: 5px; }
+.rmq-formulario input, .rmq-formulario select { padding: 8px 10px; border: 1px solid #bcccdc; border-radius: 6px; font-size: 14px; font-weight: 400; }
+.rmq-check { flex-direction: row !important; align-items: center; font-weight: 400 !important; }
+
+.rmq-acciones { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-bottom: 12px; }
+.rmq-acciones button, .rmq-tarjeta-cabecera button { padding: 9px 15px; border: none; border-radius: 6px; background: #2b6cb0; color: #fff; font-size: 14px; cursor: pointer; }
+.rmq-acciones button:hover:not(:disabled) { background: #22528a; }
+.rmq-acciones button:disabled, .rmq-tarjeta-cabecera button:disabled { background: #9aa5b1; cursor: not-allowed; }
+.rmq-acciones button.rmq-peligro { background: #a52a2a; }
+.rmq-acciones button.rmq-peligro:hover:not(:disabled) { background: #7f1d1d; }
+
+.rmq-alerta { border-radius: 8px; padding: 12px 14px; margin: 12px 0; font-size: 14px; line-height: 1.5; }
+.rmq-alerta-ok { background: #e6f4ea; border: 1px solid #9ad3a8; }
+.rmq-alerta-error { background: #fdecea; border: 1px solid #e8a09a; }
+.rmq-alerta-info { background: #eef2f7; border: 1px solid #c5d2e0; }
+.rmq-alerta ul { margin: 8px 0 0 18px; }
+
+.rmq-json { margin-top: 12px; }
+.rmq-json-titulo { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; color: #52606d; margin-bottom: 5px; }
+.rmq-json pre { background: #1f2933; color: #e4e7eb; padding: 12px; border-radius: 8px; font-size: 12.5px; line-height: 1.45; overflow-x: auto; margin: 0; }
+
+.rmq-salud { list-style: none; margin: 0; padding: 0; }
+.rmq-salud li { display: flex; align-items: center; gap: 9px; padding: 6px 0; font-size: 14px; border-bottom: 1px solid #f0f4f8; }
+.rmq-salud-nombre { font-weight: 600; min-width: 210px; }
+.rmq-salud-detalle { color: #52606d; font-size: 13px; }
+.rmq-punto { width: 11px; height: 11px; border-radius: 50%; flex: 0 0 auto; }
+.rmq-punto-verde { background: #2f855a; }
+.rmq-punto-rojo { background: #c53030; }
+.rmq-punto-gris { background: #9aa5b1; }
+
+.rmq-tabla { width: 100%; border-collapse: collapse; margin-top: 12px; font-size: 13px; }
+.rmq-tabla th, .rmq-tabla td { border: 1px solid #d9e2ec; padding: 7px 9px; text-align: left; }
+.rmq-tabla th { background: #f0f4f8; font-size: 12px; text-transform: uppercase; letter-spacing: .03em; }
+.rmq-fila-ok td { background: #f3faf5; }
+.rmq-fila-reintento td { background: #fffbea; }
+.rmq-fila-dlq td { background: #fdf2f2; }

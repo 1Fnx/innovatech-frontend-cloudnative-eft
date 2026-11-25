@@ -1,0 +1,58 @@
+:root { font-family: system-ui, Arial, sans-serif; color: #1f2937; }
+* { box-sizing: border-box; }
+body { margin: 0; background: #f3f4f6; }
+
+.nav {
+  display: flex; align-items: center; gap: 16px;
+  background: #3b82f6; color: #fff; padding: 12px 20px;
+}
+.nav .brand { font-weight: 700; }
+.nav .links { display: flex; gap: 12px; }
+.nav .links a { color: #fff; text-decoration: none; opacity: .9; }
+.nav .links a:hover { opacity: 1; text-decoration: underline; }
+.nav .auth { margin-left: auto; display: flex; align-items: center; gap: 10px; }
+.nav .user { font-size: .9rem; opacity: .95; }
+
+.container { max-width: 1000px; margin: 24px auto; padding: 0 16px; }
+h1 { margin-top: 0; }
+
+.card {
+  background: #fff; border-radius: 10px; padding: 18px;
+  box-shadow: 0 1px 3px rgba(0,0,0,.1); margin-bottom: 20px;
+}
+.claims ul { list-style: none; padding: 0; margin: 0; }
+.claims li { padding: 4px 0; border-bottom: 1px solid #f0f0f0; word-break: break-all; }
+
+.btn {
+  padding: 8px 14px; border: none; border-radius: 6px; cursor: pointer;
+  background: #3b82f6; color: #fff; font-size: .9rem;
+}
+.btn:hover { background: #2563eb; }
+.btn.secondary { background: #6b7280; }
+.btn.danger { background: #ef4444; }
+.btn.small { padding: 5px 10px; margin-right: 6px; font-size: .8rem; }
+
+.actions { display: flex; gap: 10px; margin: 12px 0; }
+
+table { width: 100%; border-collapse: collapse; margin-top: 8px; }
+th, td { border: 1px solid #e5e7eb; padding: 8px; text-align: left; font-size: .9rem; }
+th { background: #eef2ff; }
+tr:nth-child(even) { background: #fafafa; }
+
+.form-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px; margin-top: 8px;
+}
+.form-grid label { display: flex; flex-direction: column; font-weight: 600; font-size: .85rem; gap: 4px; }
+.form-grid input {
+  padding: 8px; border: 1px solid #d1d5db; border-radius: 6px; font-weight: 400;
+}
+
+.info { padding: 10px 12px; border-radius: 6px; background: #eff6ff; }
+.info.ok { background: #ecfdf5; color: #065f46; }
+.info.error { background: #fef2f2; color: #991b1b; }
+
+.code {
+  background: #1e293b; color: #e2e8f0; padding: 14px; border-radius: 8px;
+  overflow-x: auto; font-size: .8rem; max-height: 340px;
+}
