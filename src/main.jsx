@@ -1,4 +1,4 @@
-import React from "react";
+﻿import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import { MsalProvider } from "@azure/msal-react";
@@ -10,7 +10,7 @@ async function bootstrap() {
   // MSAL v3 requiere initialize() antes de usar la instancia
   await msalInstance.initialize();
 
-  // Procesa la respuesta del redirect de login (si veníamos de Entra)
+  // Procesa la respuesta del redirect de login (si venÃ­amos de Entra)
   await msalInstance.handleRedirectPromise();
 
   const accounts = msalInstance.getAllAccounts();
@@ -21,7 +21,7 @@ async function bootstrap() {
   ReactDOM.createRoot(document.getElementById("root")).render(
     <React.StrictMode>
       <MsalProvider instance={msalInstance}>
-        <BrowserRouter>
+        <BrowserRouter basename={import.meta.env.BASE_URL}>
           <App />
         </BrowserRouter>
       </MsalProvider>
@@ -30,3 +30,4 @@ async function bootstrap() {
 }
 
 bootstrap();
+

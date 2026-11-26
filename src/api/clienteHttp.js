@@ -10,6 +10,8 @@
  * configuracion y el transporte se mantienen separados de la logica del dominio.
  */
 
+import { msalInstance } from '../msalInstance';
+
 // Las URL base de cada microservicio se leen desde el archivo .env de Vite,
 // nunca se escriben "a mano" dentro de los componentes.
 export const BASES = {
@@ -45,6 +47,36 @@ export class ErrorHttp extends Error {
 }
 
 /**
+ * Token de la sesion en curso, obtenido en silencio desde la cache de MSAL.
+ *
+ * Sirve de respaldo para los modulos que no reciben el token por parametro.
+ * Varios endpoints del backend son publicos y en desarrollo se alcanzan sin
+ * credenciales, pero cuando el sistema queda detras del API Manager la puerta
+ * de enlace exige el token en todas sus rutas y rechaza la peticion antes de
+ * que llegue al microservicio. Adjuntarlo siempre que haya sesion deja un
+ * unico comportamiento para los dos entornos.
+ *
+ * Si no hay sesion o la cache no alcanza, devuelve null y la peticion sale sin
+ * cabecera: asi los endpoints publicos siguen funcionando sin haber iniciado
+ * sesion, que es como se usan en local.
+ */
+async function tokenDeSesion() {
+  try {
+    const cuenta =
+      msalInstance.getActiveAccount() ?? msalInstance.getAllAccounts()[0];
+    if (!cuenta) return null;
+    const resultado = await msalInstance.acquireTokenSilent({
+      account: cuenta,
+      scopes: SCOPES_API,
+    });
+    return resultado.accessToken;
+  } catch (error) {
+    // Sin token se continua igual; el servidor decidira si acepta o rechaza.
+    return null;
+  }
+}
+
+/**
  * Realiza una peticion HTTP contra un microservicio.
  *
  * @param {string} base     URL base del microservicio (ver BASES)
@@ -56,8 +88,9 @@ export async function peticion(base, ruta, opciones = {}) {
 
   const cabeceras = { Accept: 'application/json' };
   if (cuerpo !== null) cabeceras['Content-Type'] = 'application/json';
-  // El token solo se adjunta si existe: los endpoints /api/health son publicos.
-  if (token) cabeceras['Authorization'] = `Bearer ${token}`;
+  // El que viene por parametro manda; si no hay, se usa el de la sesion.
+  const credencial = token ?? (await tokenDeSesion());
+  if (credencial) cabeceras['Authorization'] = `Bearer ${credencial}`;
 
   const respuesta = await fetch(`${base}${ruta}`, {
     method: metodo,
